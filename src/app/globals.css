@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme tokens (very small, shadcn-like) */
+:root {
+  --background: 255 255 255;
+  --foreground: 17 24 39; /* gray-900 */
+  --muted-foreground: 107 114 128; /* gray-500 */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: 17 24 39;
+    --foreground: 243 244 246;
+    --muted-foreground: 156 163 175;
+  }
+}
+
+body {
+  background-color: rgb(var(--background));
+  color: rgb(var(--foreground));
+}
