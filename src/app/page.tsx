@@ -294,12 +294,13 @@ export default function Site() {
               聯絡我們
             </a>
           </nav>
-          <div className="flex items-center gap-2">
-            <a href="mailto:service@sonicanalytics.example" className="hidden sm:inline-flex">
-              <Button size="sm">
-                <Mail className="w-4 h-4 mr-2" />
-                快速洽談
-              </Button>
+<div className="flex items-center gap-2">
+  <a href="#contact" className="hidden sm:inline-flex">
+    <Button size="sm">
+      <Mail className="w-4 h-4 mr-2" />
+      快速洽談
+    </Button>
+
             </a>
           </div>
         </div>
@@ -310,7 +311,7 @@ export default function Site() {
         <div className="max-w-6xl mx-auto px-4 py-20 md:py-28 grid md:grid-cols-2 gap-10 items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
-              用 <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">JMP</span> 打造可落地的統計解決方案
+              用 <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">JMP & Python</span> 打造可落地的統計解決方案
             </h1>
             <p className="text-muted-foreground mt-4 text-lg">
               資料清理、統計建模、互動儀表板與自動化報告，一站式代寫與顧問服務。
@@ -376,12 +377,7 @@ export default function Site() {
                   </li>
                 </ul>
               </CardContent>
-              <CardFooter className="justify-end">
-                {/* 已修改：Hero 按鈕 → 新視窗開啟 HTML 範例 */}
-                <a href="/reports/msa-grr.html" target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" size="sm">索取此範例</Button>
-                </a>
-              </CardFooter>
+
             </Card>
           </motion.div>
         </div>
@@ -510,72 +506,85 @@ export default function Site() {
         </div>
       </Section>
 
-      {/* Contact */}
-      <Section id="contact" title="聯絡我們" subtitle="留下需求，我們在 1–2 個工作天內回覆">
-        <div className="grid md:grid-cols-2 gap-8 items-start">
-          <Card className="rounded-2xl">
-            <CardHeader>
-              <CardTitle>專案洽談</CardTitle>
-              <CardDescription>請簡述資料來源、目標與時程</CardDescription>
-            </CardHeader>
-            <CardContent>
-              {/* 靜態表單，可替換為 API（FastAPI/Flask） */}
-              <form action="mailto:service@sonicanalytics.example" method="post" className="space-y-3">
-                <div className="grid grid-cols-2 gap-3">
-                  <Input name="name" placeholder="您的姓名" required />
-                  <Input name="email" placeholder="您的 Email" type="email" required />
-                </div>
-                <Input name="subject" placeholder="主旨（例如：MSA 報告自動化）" />
-                <Textarea name="message" placeholder="請描述需求、資料型態、預計時程與預算範圍" rows={6} />
-                <div className="flex items-center gap-2">
-                  <Button type="submit">
-                    <Mail className="w-4 h-4 mr-2" />
-                    寄出需求
-                  </Button>
-                  <a href="tel:+886-2-0000-0000">
-                    <Button variant="outline">
-                      <Phone className="w-4 h-4 mr-2" />
-                      電話洽談
-                    </Button>
-                  </a>
-                </div>
-              </form>
-            </CardContent>
-          </Card>
+{/* Contact */}
+<Section
+  id="contact"
+  title="聯絡我們"
+  subtitle="目前採 LINE 一對一洽談，如需服務請加好友並留言您的需求"
+>
+  <div className="grid md:grid-cols-2 gap-8 items-start">
+    {/* 左側：LINE 聯絡方式 */}
+    <Card className="rounded-2xl">
+      <CardHeader>
+        <CardTitle>透過 LINE 聯絡匠映分析</CardTitle>
+        <CardDescription>加入好友後，請簡單說明您的產業、需求與時程</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p className="text-sm text-muted-foreground mb-4">
+          建議先提供：目前使用工具（JMP / Excel / 其他）、資料類型（製程、量測、實驗）、以及希望解決的問題，我們會回覆合適的做法與合作模式。
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 items-start">
+          {/* 官方 LINE 加好友按鈕 */}
+          <a
+            href="https://lin.ee/ngYdJbH"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="透過 LINE 聯絡匠映分析"
+          >
+            <img
+              src="https://scdn.line-apps.com/n/line_add_friends/btn/zh-Hant.png"
+              alt="加入匠映分析 LINE 好友"
+              height={36}
+            />
+          </a>
 
-          <div className="space-y-6">
-            <Card className="rounded-2xl">
-              <CardHeader>
-                <CardTitle>為何選擇我們？</CardTitle>
-                <CardDescription>工程 × 統計 × 程式語言</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3 text-sm text-muted-foreground list-disc pl-5">
-                  <li>以商業指標為導向的統計解法，避免紙上談兵</li>
-                  <li>模組化代碼、測試與文件齊備，易於維護</li>
-                  <li>尊重安全與隱私</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="rounded-2xl">
-              <CardHeader>
-                <CardTitle>常見問題</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Accordion type="single" collapsible className="w-full">
-                  {FAQ.map((f, i) => (
-                    <AccordionItem value={`item-${i}`} key={i}>
-                      <AccordionTrigger className="text-left">{f.q}</AccordionTrigger>
-                      <AccordionContent className="text-sm text-muted-foreground">{f.a}</AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </CardContent>
-            </Card>
-          </div>
+          {/* 本地 QR Code 圖檔 */}
+          <img
+            src="/reports/M_gainfriends_2dbarcodes_GW.png"
+            alt="匠映分析 LINE QR Code"
+            className="w-32 h-32 border rounded-md"
+          />
         </div>
-      </Section>
+      </CardContent>
+    </Card>
+
+    {/* 右側：維持原本「為何選擇我們」與「常見問題」 */}
+    <div className="space-y-6">
+      <Card className="rounded-2xl">
+        <CardHeader>
+          <CardTitle>為何選擇我們？</CardTitle>
+          <CardDescription>工程 × 統計 × 程式語言</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-3 text-sm text-muted-foreground list-disc pl-5">
+            <li>以商業指標為導向的統計解法，避免紙上談兵</li>
+            <li>模組化代碼、測試與文件齊備，易於維護</li>
+            <li>尊重安全與隱私</li>
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card className="rounded-2xl">
+        <CardHeader>
+          <CardTitle>常見問題</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Accordion type="single" collapsible className="w-full">
+            {FAQ.map((f, i) => (
+              <AccordionItem value={`item-${i}`} key={i}>
+                <AccordionTrigger className="text-left">{f.q}</AccordionTrigger>
+                <AccordionContent className="text-sm text-muted-foreground">
+                  {f.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+</Section>
+
 
       {/* Footer */}
       <footer className="border-t py-10">

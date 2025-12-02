@@ -9,8 +9,7 @@
 2. 開啟 PowerShell / VS Code 內建終端機：
    ```powershell
    cd C:\JI_company\sonic-analytics
-   npm install
-   npm run dev
+   npm.cmd run dev
    ```
 3. 瀏覽 `http://localhost:3000`。
 
