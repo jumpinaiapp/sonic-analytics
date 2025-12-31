@@ -57,3 +57,7 @@ sonic-analytics/
 
 如需 **表單串接 FastAPI/Flask 寄信**、**GA/Meta Pixel 事件**、**Docker + Nginx + SSL**，告訴我要放的網域與需求，我可直接補檔。
 
+
+git add .
+git commit -m "config for cloudflare pages"
+git push
