@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo, useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -26,8 +26,6 @@ import {
   Brain,
   Box,
   Activity,
-  Volume2,
-  VolumeX,
 } from "lucide-react";
 
 // ----------------------------------
@@ -226,8 +224,6 @@ function ProductGrid({ items }: { items: Product[] }) {
 // ----------------------------------
 
 export default function Site() {
-  const [showIntro, setShowIntro] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
   const [keyword, setKeyword] = useState("");
   const [activeTab, setActiveTab] = useState<string>("all");
 
@@ -265,51 +261,10 @@ export default function Site() {
     });
   }, [keyword, tag]);
 
-  const handleVideoEnded = () => {
-    setShowIntro(false);
-  };
-
   return (
     // 外層加入 dark:bg-slate-950 dark:text-slate-50 確保全站黑底白字
     <div className="min-h-screen bg-background text-foreground relative dark:bg-slate-950 dark:text-slate-50 transition-colors duration-300">
       
-      {/* Intro Video Overlay */}
-      <AnimatePresence>
-        {showIntro && (
-          <motion.div
-            key="intro-video"
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: 0.8 } }}
-            className="fixed inset-0 z-[100] bg-black flex items-center justify-center overflow-hidden"
-          >
-            <video
-              src="/reports/StartMV.mp4"
-              className="w-full h-[100dvh] object-contain md:object-cover" 
-              autoPlay
-              muted={isMuted}
-              playsInline
-              onEnded={handleVideoEnded}
-            />
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsMuted(!isMuted);
-              }}
-              className="absolute bottom-8 left-8 text-white/80 hover:text-white border border-white/30 p-3 rounded-full transition-colors backdrop-blur-sm z-10"
-              aria-label={isMuted ? "開啟聲音" : "關閉聲音"}
-            >
-              {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
-            </button>
-            <button
-              onClick={() => setShowIntro(false)}
-              className="absolute bottom-8 right-8 text-white/60 hover:text-white text-xs border border-white/30 px-4 py-2 rounded-full transition-colors backdrop-blur-sm z-10"
-            >
-              Skip Intro
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       <a href="#home" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 dark:text-white">
         跳到主要內容
       </a>
@@ -533,7 +488,7 @@ export default function Site() {
             </CardContent>
           </Card>
 
-          {/* 右側：已移除「為何選擇我們」，只剩下 FAQ */}
+          {/* 右側：FAQ */}
           <div className="space-y-6">
             <Card className="rounded-2xl dark:bg-slate-900 dark:border-slate-800">
               <CardHeader>
