@@ -6,7 +6,7 @@
 1. 下載本專案 ZIP，解壓縮到 `C:\JI_company\sonic-analytics`。  
 2. 開啟 PowerShell / VS Code 內建終端機：
    ```powershell
-   cd C:\JI_company\sonic-analytics
+   cd C:\JI_company\
    npm.cmd run dev
    ```
 3. 瀏覽 `http://localhost:3000`。
@@ -53,14 +53,11 @@ sonic-analytics/
 
 ---
 
-如需 **表單串接 FastAPI/Flask 寄信**、**GA/Meta Pixel 事件**、**Docker + Nginx + SSL**，告訴我要放的網域與需求，我可直接補檔。
-
-
-# 1. 加入所有變更
+# 1. 將所有修改加入暫存 (現在直接包含 package.json 和 src)
 git add .
 
-# 2. 寫下這次改了什麼 (例如：新增Python服務介紹)
-git commit -m "Add new Python service product"
+# 2. 紀錄更新內容
+git commit -m "feat: 更新匠映分析網頁內容"
 
-# 3. 推送到 GitHub (這會觸發 Vercel 自動更新)
+# 3. 直接推送
 git push

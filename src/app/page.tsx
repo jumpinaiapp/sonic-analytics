@@ -17,7 +17,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Separator } from "@/components/ui/separator";
 import {
-  BarChart3,
+  BarChart,    // 修正：已從 BarChart3 替換為 BarChart
+  TrendingUp,  // 新增：用於 LINE 報表的趨勢圖示
   Code2,
   LineChart,
   Mail,
@@ -62,7 +63,7 @@ const PRODUCTS: Product[] = [
     id: "p2",
     title: "JMP 互動視覺化",
     subtitle: "Graph Builder / Control Chart",
-    icon: <BarChart3 className="w-5 h-5" />,
+    icon: <BarChart className="w-5 h-5" />, // 修正：使用 BarChart
     bullets: [
       "Graph Builder 儀表板",
       "Control Chart Builder / SPC",
@@ -123,6 +124,20 @@ const PRODUCTS: Product[] = [
     tags: ["顧問/訓練"],
     cta: "取得課綱",
     url: "/reports/training.html",
+  },
+  {
+    id: "p7",
+    title: "LINE 數據決策報表",
+    subtitle: "數據轉化為結論，手機即是戰情室",
+    icon: <TrendingUp className="w-5 h-5" />, // 修正：改用更有決策感的 TrendingUp
+    bullets: [
+      "專業統計手法，將數據精煉為經營建議",
+      "圖形化視覺呈現，一秒看清趨勢、創造營收",
+      "LINE接收報表，讓企業老闆隨時掌握營運",
+    ],
+    tags: ["智慧經營", "自動化"],
+    cta: "立即諮詢",
+    url: "/reports/line-analytics.html",
   },
 ];
 
@@ -370,7 +385,7 @@ export default function Site() {
         <div className="grid md:grid-cols-3 gap-6">
           {[
              { title: "專業技術", desc: "以科學方法為基礎，透過 JMP 生態系將模型導入生產流程。", icon: <Code2 /> },
-             { title: "業務範圍", desc: "資料清理、統計建模、A/B 測試、MSA、儀表板與自動化報告。", icon: <BarChart3 /> },
+             { title: "業務範圍", desc: "資料清理、統計建模、A/B 測試、MSA、儀表板與自動化報告。", icon: <BarChart /> }, // 修正：已從 BarChart3 替換為 BarChart
              { title: "產業經驗", desc: "熟悉半導體與製造業品質工程 (SPC、DOE)，兼顧效能與落地。", icon: <LineChart /> },
           ].map((item, i) => (
             <Card key={i} className="rounded-2xl border-none shadow-sm bg-slate-50 dark:bg-slate-900/50 dark:border dark:border-slate-800">
